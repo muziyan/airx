@@ -1,0 +1,8 @@
+Your check in of flight UB4874 is successfully scheduled.
+
+Your seat arrangement is listed below:
+Bob Selion, Seat: Row 13 Col A
+Steven Dragon, Seat: Row 13 Col C
+
+Your flight will take off at 13:50 02/04/2017. Please be prepared for boarding.
+Thank you for choosing our flights.

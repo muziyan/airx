@@ -1,0 +1,95 @@
+.banner{
+    height:400px;
+}
+
+.search-form{
+    float:left;
+    margin-top:25px;
+
+    width:380px;
+    height:320px;
+
+    background-color: white;
+    border:1px solid #eee;
+
+    padding:10px 20px;
+}
+
+.form-row{
+    height:50px;
+    line-height:50px;
+}
+
+.field-name{
+    flex:72px 0 0;
+    text-align: right;
+    margin-right:20px;
+}
+
+.field-input .input{
+    height:30px;
+    width:100%;
+}
+
+.service-intro{
+    width:300px;
+    height:168px;
+
+    background-color: rgba(18, 62, 81, 0.8);
+    margin-top:25px;
+    float:right;
+    padding:0 16px;
+}
+
+.service-intro .form-row:last-child{
+    height:36px;
+    line-height:36px;
+}
+
+main{
+    min-height:0;
+}
+
+main .block{
+    width:300px;
+    height:390px;
+    margin-right:100px;
+    float:left;
+
+    background: #098bc4 no-repeat center;
+    overflow: hidden;
+}
+
+main .block:nth-of-type(1){
+    background-image: url('../images/my_trip_icon.png');
+}
+
+main .block:nth-of-type(2){
+    background-image: url('../images/check_in_icon.png');
+}
+
+main .block:nth-of-type(3){
+    background-image: url('../images/my_account_icon.png');
+}
+
+main .block:hover{
+    background-color: #00a1de;
+}
+
+main .block:last-of-type{
+    margin-right:0;
+}
+
+main .block a{
+    display:block;
+    text-align: center;
+    height:100%;
+    font-size:20px;
+    line-height:568px;
+}
+
+main .wrapper:after{
+    content:'';
+    display:block;
+    clear: both;
+}

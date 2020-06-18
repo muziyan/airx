@@ -1,0 +1,118 @@
+.search-box{
+    width:1100px;
+    height:106px;
+
+    padding:10px 25px 16px;
+}
+
+.field-col{
+    flex:5;
+    margin-right:25px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.field-col:last-of-type{
+    flex:3;
+    margin-right:0;
+}
+
+.field-col>*{
+    flex:1;
+    max-height:40px;
+    line-height:40px;
+}
+
+.search-box input[type=submit]{
+    width:100%;
+}
+
+.flight-info{
+    margin-top:20px;
+    height:105px;
+
+    padding:10px 30px;
+    border:1px solid #e2e2e2;
+}
+
+.flight-info>*{
+    float:left;
+    height:100%;
+}
+
+.info1{
+    padding-top:13px;
+    line-height:28px;
+    width:165px;
+}
+
+.info-from{
+    width:140px;
+    line-height:1.2em;
+    padding-top:8px;
+}
+
+.info-arrow{
+    width:140px;
+}
+
+.info-arrow img{
+    width:100%;
+}
+
+.info-to{
+    padding-top:28px;
+    padding-left:12px;
+    margin-right:50px;
+    width:100px;
+}
+
+.info-class{
+    width:280px;
+    justify-content: space-between;
+}
+
+.class-option{
+    flex:86px 0 0;
+    margin-right:12px;
+    padding-top:14px;
+    cursor: pointer;
+}
+
+.class-name{
+    margin-bottom:6px;
+}
+
+.class-option:last-of-type{
+    margin-right:0;
+}
+
+.class-option:hover{
+    background-color: #fcfefe;
+}
+
+.class-option.selected{
+    background-color: #fcfefe;
+    border:1px solid #a6d1e1;
+    position:relative;
+}
+
+.class-option.selected::after{
+    content:'';
+    background-image: url('../images/selected_label.png');
+    width:19px;
+    height:19px;
+    position:absolute;
+    right:-1px;
+    bottom:-1px;
+}
+
+.info-button{
+    float:right;
+    margin-top:25px;
+}
+
+main{
+    padding-bottom:50px;
+}

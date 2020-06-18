@@ -1,0 +1,90 @@
+main{
+    min-height:800px;
+}
+
+.info-content{
+    padding: 0 30px;
+}
+
+.content-container{
+    min-height:720px;
+    padding:72px 72px;
+}
+
+.check-in-container{
+    border:1px solid #e2e2e2;
+}
+
+.order{
+    border:1px solid #eee;
+    margin-bottom:30px;
+}
+
+.order:last-of-type{
+    margin-bottom:0;
+}
+
+.order-head{
+    height:30px;
+    line-height:30px;
+    padding-left:25px;
+}
+
+.order-no{
+    margin-left:50px;
+}
+
+.order-detail{
+    min-height:120px;
+}
+
+.order-col{
+    border-right:1px solid #eee;
+    justify-content: center;
+}
+
+.order:last-of-type{
+    border-right:none;
+}
+
+.order-col:nth-of-type(1){
+    padding:13px 0 12px 25px;
+    flex-direction: column;
+    flex:1.5;
+}
+
+.order-col:nth-of-type(2){
+    flex:1.8;
+    padding-left:25px;
+}
+
+.ticket-amount{
+    padding-top:50px;
+}
+
+.ticket-guests{
+    flex-direction: column;
+    padding:13px 13px 13px 0;
+    justify-content: center;
+}
+
+.guest-name{
+    flex:24px 0 0;
+}
+
+.order-col:nth-of-type(3){
+    padding-top:38px;
+}
+
+.check-in-button{
+    width:85px;
+}
+
+.ticket-status{
+    height:48px;
+    width:150px;
+}
+
+.account-line{
+    margin-top:50px;
+}

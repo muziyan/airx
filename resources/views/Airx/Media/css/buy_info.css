@@ -1,0 +1,164 @@
+main{
+    min-height:800px;
+}
+
+.info-content{
+    padding: 0 30px;
+}
+
+.flight-info .info-content{
+    height:80px;
+}
+
+.flight-info .info-content>*{
+    float:left;
+}
+
+.flight-no{
+    width:150px;
+}
+
+.flight-model{
+    width:160px;
+}
+
+.flight-time{
+    width:70px;
+    margin-top:-8px;
+}
+
+.flight-from, .flight-to{
+    padding:0 8px;
+    width:150px;
+}
+
+.flight-class{
+
+}
+
+.info-arrow{
+    width:140px;
+    height:100%;
+    text-align: center;
+}
+
+.info-content .flight-class {
+    float: right;
+    margin-top:-15px;
+    height: 62px;
+    padding-top:6px;
+    width: 110px;
+    border: 1px solid #a6d1e1;
+}
+
+.guest-info{
+    width:100%;
+}
+
+.guest-list span{
+    margin-right:28px;
+}
+
+.guest-option, .add-guest{
+    display: inline-block;
+    height:36px;
+    line-height:32px;
+    border:1px solid #a6d1e1;
+    padding:0 25px;
+    margin:0 20px 12px 0;
+    cursor: pointer;
+    transition:0.1s;
+}
+
+.guest-option:hover, .add-guest:hover{
+    filter:drop-shadow(0px 0px 2px #a6d1e1);
+}
+
+.guest-option:active, .add-guest:active{
+    filter:brightness(0.95);
+}
+
+.guest-option.selected{
+    border:1px solid #f19858;
+    color:#f19858;
+    position:relative;
+}
+
+.guest-option.selected::after{
+    content:'';
+    background-image: url('../images/selected_label.png');
+    width:19px;
+    height:19px;
+    position:absolute;
+    right:-1px;
+    bottom:-1px;
+}
+
+.add-guest{
+    height:24px;
+    width:24px;
+    padding:0;
+    line-height:20px;
+    margin-bottom:6px;
+    text-align: center;
+}
+
+.guest-detail{
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+
+.guest-form{
+    background-color: #f9f9f9;
+    border:1px solid #ccc;
+    padding:25px;
+    flex:450px 0 0;
+    margin-top:25px;
+    position:relative;
+}
+
+.guest-form .input{
+    color:#204c94;
+}
+
+.form-row{
+    height:48px;
+    line-height:48px;
+}
+
+.guest-form:nth-of-type(even){
+    margin-right:0;
+}
+
+.field-name{
+    text-align: right;
+    flex:100px 0 0;
+    padding-right:25px;
+}
+
+.confirm{
+    margin-top:25px;
+}
+
+.remove-button{
+    font-size:12px;
+    position:absolute;
+    top:15px;
+    right:15px;
+    padding:0 6px;
+    height:24px;
+    line-height:24px;
+    visibility: hidden;
+    opacity:0;
+    transition:0.3s;
+}
+
+.guest-form:hover .remove-button{
+    visibility:visible;
+    opacity:0.5;
+}
+
+.guest-form .remove-button:hover{
+    transition:0s;
+    opacity:1;
+ }

@@ -1,0 +1,115 @@
+@charset "UTF-8";
+@import "search.css";
+
+.tabs-wrapper::before, .tabs-wrapper::after, .tabs::before, .tabs::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.tabs {
+    border-bottom: 1px solid #f19858;
+}
+
+.tabs > li {
+    float: left;
+    display: flex;
+}
+
+.tabs > li > a {
+    flex: 1;
+    display: block;
+    align-self: center;
+    line-height: 2.25em;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.tabs > li > a:not(.active) {
+    background: none;
+    color: #f19858;
+}
+
+.tabs-content > li {
+    display: none;
+    padding:25px 8px;
+}
+
+.tabs-content > li.active {
+    display: block;
+}
+
+.guest-info {
+    margin-top: 20px;
+    padding: 10px 30px;
+    border: 1px solid #e2e2e2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.guest-info > * {
+    flex:2;
+}
+
+.guest-info > *:nth-child(2) {
+    margin-left: 40px;
+    margin-right: 20px;
+    flex:3;
+}
+
+.guest-name {
+    font-size: 1.5em;
+}
+
+.guest-info .info-button {
+    margin-top: 0;
+    text-align: right;
+}
+
+.guest-info .form-group {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.guest-info .form-group label{
+    margin-right:12px;
+    width:72px;
+    display:inline-block;
+}
+
+.guest-detail .input{
+    width:300px;
+}
+
+.info-button>button:first-child{
+    margin-right:12px;
+}
+
+#profile .control p {
+    float: left;
+}
+
+.log-out{
+    margin-bottom:25px;
+}
+
+.input.display{
+    color:#204c94;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow:none;
+    font-size:1em;
+    position:relative;
+}
+
+.input.display::after{
+    content:'';
+    display:block;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:20;
+}

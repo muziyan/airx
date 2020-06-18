@@ -1,0 +1,232 @@
+*{
+    margin:0;
+    padding:0;
+
+    box-sizing: border-box;
+    outline: none;
+}
+
+body{
+    font-family: Calibri, sans-serif;
+    font-size:14px;
+    line-height:24px;
+}
+
+body>*{
+    text-align: center;
+}
+
+ul, ol, dl{
+    list-style: none;
+}
+
+a{
+    color:inherit;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.wrapper{
+    width:1100px;
+    height:100%;
+    margin:auto;
+
+    text-align: left;
+    position:relative;
+}
+
+.cl-dk{
+    color:#204c94;
+}
+
+.cl-wt{
+    color:white;
+}
+
+.cl-gr {
+    color:#798eb1;
+}
+
+.cl-og{
+    color:#f19858;
+}
+
+.cl-lt {
+    color:#a6d1e1;
+}
+
+.cl-bl{
+    color:#00a1de;
+}
+
+.cl-md{
+    color:#7cadbf;
+}
+
+.cl-999{
+    color:#999;
+}
+
+.fz-24{
+    font-size:24px;
+}
+
+.fz-20{
+    font-size:20px;
+}
+
+.fz-18{
+    font-size:18px;
+}
+
+.fz-16{
+    font-size:16px;
+}
+
+.fz-14{
+    font-size:14px;
+}
+
+.fz-12{
+    font-size:12px;
+}
+
+.fz-8p{
+    font-size:0.8em;
+}
+
+.fs-it{
+    font-style: italic;
+}
+
+.tt-uc{
+    text-transform: uppercase;
+}
+
+.tt-cp{
+    text-transform: capitalize;
+}
+
+.lk-ul{
+    color:#00a1de;
+    text-decoration: underline;
+}
+
+.bg-wt{
+    background-color: white;
+}
+
+.bg-gr{
+    background-color: #f4f4f4;
+}
+
+.bg-bl{
+    background-color: #00a1de;
+}
+
+.bg-eee{
+    background-color: #eee;
+}
+
+.bg-lt{
+    background-color: #fcfefe;
+}
+
+.ta-rt{
+    text-align: right;
+}
+
+.ta-ct{
+    text-align: center;
+}
+
+.ta-lt{
+    text-align: left;
+}
+
+.va-tp{
+    vertical-align: top;
+}
+
+.va-bl{
+    vertical-align: middle;
+}
+
+.br-sm{
+    border-radius:.2em;
+}
+
+.br-lg{
+    border-radius:.5em;
+}
+
+.flex{
+    display:flex;
+}
+
+.flex>*{
+    flex:1;
+}
+
+.pd-hz{
+    padding:0.1em 0.5em;
+}
+
+.ct-ctn{
+    position:relative;
+    text-align: center;
+}
+
+.ct-ele{
+    position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+}
+
+.fw-bd{
+    font-weight:bold;
+}
+
+.fw-nm{
+    font-weight:normal;
+}
+
+.op-5p{
+    opacity: .5;
+}
+
+.title-line {
+    height:1.8em;
+    position:relative;
+    margin-bottom:25px;
+}
+
+.title-line::after{
+    content:'';
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100%;
+    margin:auto;
+    height:1px;
+    background-color: #a6d1e1;
+    z-index:0;
+}
+
+.title-line b{
+    height:100%;
+    position:absolute;
+    left:50px;
+    padding:0 0.6em;
+    z-index:1;
+}
+
+.proto, .hidden{
+    display:none;
+}
