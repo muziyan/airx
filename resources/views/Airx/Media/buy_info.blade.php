@@ -1,16 +1,15 @@
 @extends("layout.app")
 
 @section("link")
-		<link rel="stylesheet" href="css/frame.css">
-		<link rel="stylesheet" href="css/default.css">
-		<link rel="stylesheet" href="css/formpage.css">
-		<link rel="stylesheet" href="css/buy_info.css">
-		<script src="js/jquery-3.1.1.js"></script>
+		<link rel="stylesheet" href="{{asset("css/frame.css")}}">
+		<link rel="stylesheet" href="{{asset("css/default.css")}}">
+		<link rel="stylesheet" href="{{asset("css/formpage.css")}}">
+		<link rel="stylesheet" href="{{asset("css/buy_info.css")}}">
 @stop
 @section("header")
 		<header>
 			<div class="wrapper">
-				<a href="{{route("home")}}"><img src="images/airx_logo.png" alt="logo" class="logo"></a>
+				<a href="{{route("home")}}"><img src="{{asset("images/airx_logo.png")}}" alt="logo" class="logo"></a>
 				<nav>
 					<ul class="cl-dk">
 						<li><a href="{{route("search")}}"><< Cancel</a></li>
@@ -32,26 +31,26 @@
 						<b class="cl-md fz-24 bg-wt">Flight Info</b>
 					</div>
 					<div class="info-content">
-						<div class="flight-no fz-24 cl-dk fs-it">No. RW426</div>
+						<div class="flight-no fz-24 cl-dk fs-it">{{$flight->fno}}</div>
 						<div class="flight-model">
-							MODEL <span class="cl-wt bg-bl fz-8p br-sm pd-hz">300ER</span>
+							MODEL <span class="cl-wt bg-bl fz-8p br-sm pd-hz">{{$flight->flight_type}}</span>
 						</div>
 						<div class="flight-time ta-ct">
-							<div class="fz-20 cl-bl">03:59</div>
-							<div class="fz-14 cl-gr">14/03/2017</div>
+							<div class="fz-20 cl-bl">{{$flight->time}}</div>
+							<div class="fz-14 cl-gr">{{$flight->date}}</div>
 						</div>
 						<div class="flight-from fz-24 cl-dk ta-rt">
-							Beijing
+							{{$flight->from_city}}
 						</div>
 						<div class="info-arrow">
-							<img src="images/city_arrow.png" alt="to">
+							<img src="{{asset("images/city_arrow.png")}}" alt="to">
 						</div>
 						<div class="flight-to fz-24 cl-dk">
-							Shanghai
+							{{$flight->to_city}}
 						</div>
 						<div class="flight-class cl-dk bg-lt br-sm ta-ct tt-cp">
-							economic<br>
-							<span class="fz-24 cl-bl">177</span> <span class="fz-14 cl-gr">left</span>
+                            {{$class}}<br>
+							<span class="fz-24 cl-bl">{{$flight[$classArr[0]] - $flight[$classArr[1]]}}</span> <span class="fz-14 cl-gr">left</span>
 						</div>
 					</div>
 				</div>
@@ -62,105 +61,37 @@
 					<div class="info-content fz-18">
 						<div class="guest-list">
 							<span class="fw-bd cl-dk">Saved Guests:</span>
-							<div class="guest-option br-sm cl-dk bg-lt selected" data-guest="1">Steven Dragon</div>
-							<div class="guest-option br-sm cl-dk bg-lt" data-guest="2">Tester I</div>
-							<div class="guest-option br-sm cl-dk bg-lt selected" data-guest="3">Tester II</div>
+                            @foreach($guests as $guest)
+							    <div class="guest-option br-sm cl-dk bg-lt" data-guest="{{$guest->id}}">{{$guest->id}}</div>
+                            @endforeach
 							<div class="add-guest br-sm cl-dk bg-lt">+</div>
 						</div>
 						<div class="guest-detail flex">
-							<div class="guest-form br-sm" data-guest="1">
+                            @foreach($guests as $guest)
+                                <div class="guest-form br-sm" data-guest="{{$guest->id}}">
 								<div class="form-row flex">
 									<div class="field-name cl-gr">NAME</div>
-									<div class="field-input"><input type="text" title="name" class="input mid" name="name" value="Steven Dragon" readonly=""></div>
+									<div class="field-input"><input type="text" title="name" class="input mid" name="name[]" value="{{$guest->guest_name}}" readonly=""></div>
 								</div>
 								<div class="form-row flex">
 									<div class="field-name cl-gr">PHONE</div>
-									<div class="field-input"><input type="text" title="phone" class="input mid" name="phone" value="1234569874" readonly=""></div>
+									<div class="field-input"><input type="text" title="phone" class="input mid" name="phone[]" value="{{$guest->phone}}" readonly=""></div>
 								</div>
 								<div class="form-row flex">
 									<div class="field-name cl-gr">GENDER</div>
 									<div class="field-input">
-										<select title="gender" class="input mid" name="gender" disabled="">
-											<option selected="" value="m">Male</option>
-											<option value="f">Female</option>
+										<select title="gender" class="input mid" name="gender[]" disabled="">
+                                            <option {{$guest->gender == "female" ? "selected" : ""}} value="female">Female</option>
+                                            <option {{$guest->gender == "male" ? "selected" : ""}} value="male">Male</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-row flex">
 									<div class="field-name cl-gr">ID CARD</div>
-									<div class="field-input"><input type="text" title="id_card" class="input mid" name="id_card" value="45648945216545" readonly=""></div>
+									<div class="field-input"><input type="text" title="id_card" class="input mid" name="card[]" value="45648945216545" readonly=""></div>
 								</div>
 							</div>
-							<div class="guest-form br-sm" data-guest="2">
-								<div class="form-row flex">
-									<div class="field-name cl-gr">NAME</div>
-									<div class="field-input"><input type="text" title="name" class="input mid" name="name" value="Tester I" readonly=""></div>
-								</div>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">PHONE</div>
-									<div class="field-input"><input type="text" title="phone" class="input mid" name="phone" value="13164556745" readonly=""></div>
-								</div>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">GENDER</div>
-									<div class="field-input">
-										<select title="gender" class="input mid" name="gender" disabled="">
-											<option value="m">Male</option>
-											<option selected="" value="f">Female</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">ID CARD</div>
-									<div class="field-input"><input type="text" title="id_card" class="input mid" name="id_card" value="211145587451154221" readonly=""></div>
-								</div>
-							</div>
-							<div class="guest-form br-sm" data-guest="3">
-								<div class="form-row flex">
-									<div class="field-name cl-gr">NAME</div>
-									<div class="field-input"><input type="text" title="name" class="input mid" name="name" value="Tester II" readonly=""></div>
-								</div>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">PHONE</div>
-									<div class="field-input"><input type="text" title="phone" class="input mid" name="phone" value="12345678912" readonly=""></div>
-								</div>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">GENDER</div>
-									<div class="field-input">
-										<select title="gender" class="input mid" name="gender" disabled="">
-											<option selected="" value="m">Male</option>
-											<option value="f">Female</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">ID CARD</div>
-									<div class="field-input"><input type="text" title="id_card" class="input mid" name="id_card" value="123456789123456789" readonly=""></div>
-								</div>
-							</div>
-							<div class="guest-form br-sm">
-								<button type="button" class="remove-button bt-lt br-sm">remove</button>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">NAME</div>
-									<div class="field-input"><input type="text" title="name" class="input mid" name="name"></div>
-								</div>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">PHONE</div>
-									<div class="field-input"><input type="text" title="phone" class="input mid" name="phone"></div>
-								</div>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">GENDER</div>
-									<div class="field-input">
-										<select title="gender" class="input mid" name="gender">
-											<option value="m">Male</option>
-											<option value="f">Female</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-row flex">
-									<div class="field-name cl-gr">ID CARD</div>
-									<div class="field-input"><input type="text" title="id_card" class="input mid" name="id_card"></div>
-								</div>
-							</div>
+                            @endforeach
 						</div>
 						<div class="confirm ta-rt">
 							<button class="bt-lt br-sm">CONFIRM &gt;</button>
@@ -172,6 +103,42 @@
     </main>
 		<script>
 		$(function(){
+            let template = `
+                <div class="guest-form br-sm">
+\t\t\t\t\t\t\t\t<button type="button" class="remove-button bt-lt br-sm">remove</button>
+\t\t\t\t\t\t\t\t<div class="form-row flex">
+\t\t\t\t\t\t\t\t\t<div class="field-name cl-gr">NAME</div>
+\t\t\t\t\t\t\t\t\t<div class="field-input"><input type="text" title="name" class="input mid" name="name[]"></div>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class="form-row flex">
+\t\t\t\t\t\t\t\t\t<div class="field-name cl-gr">PHONE</div>
+\t\t\t\t\t\t\t\t\t<div class="field-input"><input type="text" title="phone" class="input mid" name="phone[]"></div>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class="form-row flex">
+\t\t\t\t\t\t\t\t\t<div class="field-name cl-gr">GENDER</div>
+\t\t\t\t\t\t\t\t\t<div class="field-input">
+\t\t\t\t\t\t\t\t\t\t<select title="gender" class="input mid" name="gender[]">
+\t\t\t\t\t\t\t\t\t\t\t<option value="m">Male</option>
+\t\t\t\t\t\t\t\t\t\t\t<option value="f">Female</option>
+\t\t\t\t\t\t\t\t\t\t</select>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class="form-row flex">
+\t\t\t\t\t\t\t\t\t<div class="field-name cl-gr">ID CARD</div>
+\t\t\t\t\t\t\t\t\t<div class="field-input"><input type="text" title="id_card" class="input mid" name="card"></div>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</div>
+            `;
+            $(".guest-option").on("click",function () {
+                $(this).addClass("selected")
+            })
+            $(".add-guest").on("click",function () {
+                $(".guest-detail").append(template)
+
+                $(".guest-form .remove-button").on("click",function () {
+                    $(this).parent().remove();
+                })
+            })
 		});
 		</script>
 @stop

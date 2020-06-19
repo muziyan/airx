@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Flight;
+use App\Models\guest;
 use Illuminate\Http\Request;
 
 class BaseRouterController extends Controller
@@ -22,7 +23,12 @@ class BaseRouterController extends Controller
     }
 
     public function ucenter(){
-        return view("Airx.Media.ucenter");
+        $guests = guest::where("user_id",session("user_id"))->get();
+
+        return view("Airx.Media.ucenter",[
+            "guests" => $guests,
+            "user" => session("user")
+        ]);
     }
 
     public function checkIn(){
@@ -45,7 +51,27 @@ class BaseRouterController extends Controller
         ]);
     }
 
-    public function buyInfo(){
-        return view("Airx.Media.buy_info");
+    public function buyInfo($id,$class){
+
+        $flight = Flight::find($id);
+        $guests = guest::where("user_id",session("user_id"))->get();
+
+        $classArr = $this->convertFlightType($class);
+
+        return view("Airx.Media.buy_info",[
+            "flight" => $flight,
+            "guests" => $guests,
+            "user" => session("user"),
+            "class" => $class,
+            "classArr" => $classArr
+        ]);
+    }
+
+    public function login(){
+        return view("Airx.Media.login");
+    }
+
+    public function register(){
+        return view("Airx.Media.register");
     }
 }

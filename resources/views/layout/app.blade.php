@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AIRX - Best Service Airlines</title>
 
+    <script src="{{asset("js/jquery-3.1.1.js")}}"></script>
     @section("link")
     @show
 </head>
@@ -29,6 +30,8 @@
         </header>
     @show
 
+    @include("layout._flash")
+
     @section("banner")
     @show
 
@@ -39,9 +42,9 @@
     @section("footer")
         <footer>
             <div class="wrapper fz-18 cl-dk">
-                <img src="images/co2zer_icon.png" alt="co2zer">
+                <img src="{{asset("images/co2zer_icon.png")}}" alt="co2zer">
                 <a href="http://www.skyteam.com">www.skyteam.com</a>
-                <a href="index.blade.php">www.airx.com</a>
+                <a href="{{route("home")}}">www.airx.com</a>
             </div>
         </footer>
         @show

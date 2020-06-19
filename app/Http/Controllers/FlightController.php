@@ -31,6 +31,9 @@ class FlightController extends Controller
 
     public function store(Request $request)
     {
+        if (!$request['date'] && $request['from'] == 'Any city' && $request['to'] == "Select a city"){
+            return redirect("/search");
+        }
 
         $cities = City::all();
 
@@ -42,10 +45,14 @@ class FlightController extends Controller
                 if ($request['to'] && $request['to'] != "Select a city"){
                     $query->where("to_city",$request['to']);
                 };
+                if ($request['date'] && $request['date'] == date("Y-m-d")){
+                    $query->where("time",">",date("H:i:s",strtotime("+30 minute")));
+                }
             })
             ->orderBy("date","asc")
             ->orderBy("time",'asc')
             ->get();
+
         return view("Airx.Media.search",[
             "flights" => $flights,
             'cities' => $cities

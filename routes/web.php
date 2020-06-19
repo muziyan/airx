@@ -13,10 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Go to page
 Route::get("/","BaseRouterController@home")->name("home");
-Route::get("/ucenter","BaseRouterController@ucenter")->name("ucenter");
+Route::get("/ucenter","BaseRouterController@ucenter")->name("ucenter")->middleware("auth");
 Route::get("/check_in","BaseRouterController@checkIn")->name("check_in");
-Route::get("/search","BaseRouterController@search")->name("search");
-Route::get("/buy_info","BaseRouterController@buyInfo")->name("buy_info");
+Route::get("/buy_info/{id}/{class}","BaseRouterController@buyInfo")->name("buy_info")->middleware("auth");
 
+// search
+Route::get("/search","BaseRouterController@search")->name("search");
 Route::post("/search","FlightController@store")->name("search");
+
+// auth
+Route::get("/login","BaseRouterController@login")->name("login");
+Route::post("/login","UserController@login")->name("login");
+Route::get("/register","BaseRouterController@register")->name("register");
+Route::post("/register","UserController@register")->name("register");
+Route::get("/logout","UserController@logout")->name("logout");
+
+// user
+Route::resource("/user","UserController")->only(['update']);

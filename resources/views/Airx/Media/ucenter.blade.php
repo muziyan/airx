@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/formpage.css">
     <link rel="stylesheet" href="css/ucenter.css">
-    <script src="js/jquery-3.1.1.js"></script>
 @stop
 
 
@@ -31,25 +30,27 @@
             </ul>
             <ul class="tabs-content">
                 <li id="profile" class=active>
-                    <form action="#" id="profile-form">
+                    <form action="{{route("user.update",[$user->id])}}" method="post" id="profile-form">
+                        @csrf()
+                        @method('put')
                         <p class="cl-og"></p>
                         <div class="form-row flex">
                             <div class="field-name"><label class="cl-gr">E-MAIL</label></div>
                             <!--You can use property 'disabled' and style 'display' to make an input reanonly and looks like plain text.-->
                             <div class="field-input"><input type="text" title="email" class="input big display"
-                                                            value="admin@airx.com" required disabled></div>
+                                                            value="{{$user->email}}" required disabled></div>
 
                         </div>
                         <p class="cl-og"></p>
                         <div class="form-row flex">
                             <div class="field-name"><label class="cl-gr">USERNAME</label></div>
                             <div class="field-input"><input type="text" title="username" class="input big"
-                                                            value="airx_admin" required></div>
+                                                            value="{{$user->username}}" required></div>
                         </div>
                         <p class="cl-og"></p>
                         <div class="form-row flex">
                             <div class="field-name"><label class="cl-gr">PASSWORD</label></div>
-                            <div class="field-input"><input type="password" title="password" class="input big"
+                            <div class="field-input"><input type="password" name="password" title="password" class="input big"
                                                             required></div>
                         </div>
                         <div class="form-row flex">
@@ -62,17 +63,17 @@
                         <div class="form-row flex">
                             <div class="field-name"><label class="cl-gr">GENDER</label></div>
                             <div class="field-input">
-                                <select title="gender" class="input big">
-                                    <option value="f">Female</option>
-                                    <option selected value="m">Male</option>
+                                <select title="gender" name="gender" class="input big">
+                                    <option {{$user->gender == "female" ? "selected" : ""}} value="female">Female</option>
+                                    <option {{$user->gender == "male" ? "selected" : ""}} value="male">Male</option>
                                 </select>
                             </div>
                         </div>
                         <p class="cl-og"></p>
                         <div class="form-row flex">
                             <div class="field-name"><label class="cl-gr">PHONE</label></div>
-                            <div class="field-input"><input type="text" title="phone" class="input big"
-                                                            value="123456789_m" required></div>
+                            <div class="field-input"><input type="text" name="phone" title="phone" class="input big"
+                                                            value="{{$user->phone}}" required></div>
                         </div>
                         <div class="form-row ta-rt control">
                             <input type="submit" title="password" class="bt-lt tt-uc" value="Submit">
@@ -81,28 +82,29 @@
                 </li>
                 <li id="guests">
                     <p class="cl-og"></p>
+                    @foreach($guests as $guest)
                     <form action="#" method="post" style="width:100%">
                         <div class="guest-info bg-eee fz-16 br-sm">
                             <div class="guest-name">
                                 <input type="text" title="NAME" class="input big"
-                                       value="Bob Selion">
+                                       value="{{$guest->$guest_name}}">
                             </div>
                             <div class="guest-detail">
                                 <div class="mobile form-group">
                                     <label>MOBILE: </label>
                                     <input type="tel" title="MOBILE" class="input mid"
-                                           value="123456789">
+                                           value="{{$guest->phone}}">
                                 </div>
                                 <div class="idno form-group">
                                     <label>ID CARD: </label>
                                     <input type="text" title="ID" class="input mid"
-                                           value="12455877566">
+                                           value="{{$guest->card}}">
                                 </div>
                                 <div class="idno form-group">
                                     <label>GENDER </label>
-                                    <select title="gender" class="input mid">
-                                        <option selected value="f">Female</option>
-                                        <option value="m">Male</option>
+                                    <select title="gender" name="gender" class="input mid">
+                                        <option {{$user->gender == "female" ? "selected" : ""}} value="female">Female</option>
+                                        <option {{$user->gender == "male" ? "selected" : ""}} value="male">Male</option>
                                     </select>
                                 </div>
                             </div>
@@ -112,99 +114,7 @@
                             </div>
                         </div>
                     </form>
-                    <form action="#" method="post" style="width:100%">
-                        <div class="guest-info bg-eee fz-16 br-sm">
-                            <div class="guest-name">
-                                <input type="text" title="NAME" class="input big"
-                                       value="Steven Dragon">
-                            </div>
-                            <div class="guest-detail">
-                                <div class="mobile form-group">
-                                    <label>MOBILE: </label>
-                                    <input type="tel" title="MOBILE" class="input mid"
-                                           value="1234569874">
-                                </div>
-                                <div class="idno form-group">
-                                    <label>ID CARD: </label>
-                                    <input type="text" title="ID" class="input mid"
-                                           value="45648945216545">
-                                </div>
-                                <div class="idno form-group">
-                                    <label>GENDER </label>
-                                    <select title="gender" class="input mid">
-                                        <option value="f">Female</option>
-                                        <option selected value="m">Male</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="info-button">
-                                <button class="bt-lt br-sm fw-nm fz-16">MODIFY ></button>
-                                <button class="bt-lt br-sm fw-nm fz-16 delete">DELETE ></button>
-                            </div>
-                        </div>
-                    </form>
-                    <form action="#" method="post" style="width:100%">
-                        <div class="guest-info bg-eee fz-16 br-sm">
-                            <div class="guest-name">
-                                <input type="text" title="NAME" class="input big"
-                                       value="Tester I">
-                            </div>
-                            <div class="guest-detail">
-                                <div class="mobile form-group">
-                                    <label>MOBILE: </label>
-                                    <input type="tel" title="MOBILE" class="input mid"
-                                           value="13164556745">
-                                </div>
-                                <div class="idno form-group">
-                                    <label>ID CARD: </label>
-                                    <input type="text" title="ID" class="input mid"
-                                           value="211145587451154221">
-                                </div>
-                                <div class="idno form-group">
-                                    <label>GENDER </label>
-                                    <select title="gender" class="input mid">
-                                        <option selected value="f">Female</option>
-                                        <option value="m">Male</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="info-button">
-                                <button class="bt-lt br-sm fw-nm fz-16">MODIFY ></button>
-                                <button class="bt-lt br-sm fw-nm fz-16 delete">DELETE ></button>
-                            </div>
-                        </div>
-                    </form>
-                    <form action="#" method="post" style="width:100%">
-                        <div class="guest-info bg-eee fz-16 br-sm">
-                            <div class="guest-name">
-                                <input type="text" title="NAME" class="input big"
-                                       value="Tester II">
-                            </div>
-                            <div class="guest-detail">
-                                <div class="mobile form-group">
-                                    <label>MOBILE: </label>
-                                    <input type="tel" title="MOBILE" class="input mid"
-                                           value="12345678912">
-                                </div>
-                                <div class="idno form-group">
-                                    <label>ID CARD: </label>
-                                    <input type="text" title="ID" class="input mid"
-                                           value="123456789123456789">
-                                </div>
-                                <div class="idno form-group">
-                                    <label>GENDER </label>
-                                    <select title="gender" class="input mid">
-                                        <option value="f">Female</option>
-                                        <option selected value="m">Male</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="info-button">
-                                <button class="bt-lt br-sm fw-nm fz-16">MODIFY ></button>
-                                <button class="bt-lt br-sm fw-nm fz-16 delete">DELETE ></button>
-                            </div>
-                        </div>
-                    </form>
+                    @endforeach
                 </li>
             </ul>
         </div>
@@ -223,5 +133,20 @@
             e.preventDefault();
         }
     });
+
+    $("#profile-form").on("submit",function () {
+        if($("#profile-form input[title=password]").val() !== $("#profile-form input[title=repeat_password]").val()){
+            alert("password are inconsistent!");
+            return false;
+        }
+    })
+
+    $("#profile-form input[title=username]").on("change",function () {
+        $(this).attr("name","username")
+    })
+
+    $(".log-out").on("click",function () {
+        window.location = "{{route('logout')}}"
+    })
 </script>
 @stop

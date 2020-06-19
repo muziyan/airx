@@ -1,54 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AIRX - Best Service Airlines</title>
-
+@extends("layout.app")
+@section("link")
     <link rel="stylesheet" href="css/frame.css">
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/formpage.css">
-    <script src="js/jquery-3.1.1.js"></script>
+@stop
 
-</head>
-<body>
-<header>
-    <div class="wrapper">
-        <a href="index.blade.php"><img src="images/airx_logo.png" alt="logo" class="logo"></a>
-        <nav>
-            <ul class="cl-dk">
-                <li>
-                    <a href="ucenter.blade.php">My Account</a>
-                </li>
-                <li><a href="check_in.blade.php">Check In</a></li>
-                <li><a href="search.blade.php">Plan and Book</a></li>
-                <li><a href="index.blade.php">Home</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+@section("banner")
 <section class="banner thin">
     <div class="wrapper cl-wt">
         <h1>Register</h1>
     </div>
 </section>
+@stop
+
+@section("main")
 <main class="fz-16">
     <div class="wrapper">
-        <form action="ucenter.blade.php" method="post" class="info-form">
+        <form action="{{route("register")}}" method="post" class="info-form">
+            @csrf()
             <div class="form-row cl-dk"><b>Create a new AIRX account:</b></div>
             <p class="cl-og"></p>
             <div class="form-row flex">
                 <div class="field-name"><label class="cl-gr">E-MAIL</label></div>
-                <div class="field-input"><input type="text" title="email" class="input big" value="" required></div>
+                <div class="field-input"><input type="text" name="email" title="email" class="input big" value="" required></div>
             </div>
             <p class="cl-og"></p>
             <div class="form-row flex">
                 <div class="field-name"><label class="cl-gr">USERNAME</label></div>
-                <div class="field-input"><input type="text" title="username" class="input big" value="" required></div>
+                <div class="field-input"><input type="text" name="username" title="username" class="input big" value="" required></div>
             </div>
             <p class="cl-og"></p>
             <div class="form-row flex">
                 <div class="field-name"><label class="cl-gr">PASSWORD</label></div>
-                <div class="field-input"><input type="password" title="password" class="input big" required></div>
+                <div class="field-input"><input type="password" name="password" title="password" class="input big" required></div>
             </div>
             <div class="form-row flex">
                 <div class="field-name"><label class="cl-gr">REPEAT PASSWORD</label></div>
@@ -59,16 +43,16 @@
             <div class="form-row flex">
                 <div class="field-name"><label class="cl-gr">GENDER</label></div>
                 <div class="field-input">
-                    <select title="gender" class="input big">
-                        <option value="f">Female</option>
-                        <option value="m">Male</option>
+                    <select title="gender" name="gender" class="input big">
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
                     </select>
                 </div>
             </div>
             <p class="cl-og"></p>
             <div class="form-row flex">
                 <div class="field-name"><label class="cl-gr">PHONE</label></div>
-                <div class="field-input"><input type="text" title="phone" class="input big" value="" required></div>
+                <div class="field-input"><input name="phone" type="number" minlength="11" maxlength="11" title="phone" class="input big" value="" required></div>
             </div>
             <div class="form-row">
                 <input type="checkbox" title="agree" class="input va-bl" required>&nbsp;
@@ -80,12 +64,12 @@
         </form>
     </div>
 </main>
-<footer>
-    <div class="wrapper fz-18 cl-dk">
-        <img src="images/co2zer_icon.png" alt="co2zer">
-        <a href="http://www.skyteam.com">www.skyteam.com</a>
-        <a href="index.blade.php">www.airx.com</a>
-    </div>
-</footer>
-</body>
-</html>
+<script>
+    $(".info-form").on("submit",function () {
+        if($("input[title=password]").val() !== $("input[title=repeat_password]").val()){
+            alert("password are inconsistent!");
+            return false;
+        }
+    })
+</script>
+@stop

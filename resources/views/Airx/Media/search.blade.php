@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/formpage.css">
     <link rel="stylesheet" href="css/search.css">
-    <script src="js/jquery-3.1.1.js"></script>
 @stop
 
 @section("banner")
@@ -66,7 +65,7 @@
 <main class="bg-eee">
     <div class="wrapper">
         @foreach($flights as $flight)
-        <div class="flight-info bg-wt fz-18 br-sm">
+            <div class="flight-info bg-wt fz-18 br-sm">
             <div class="info1 cl-gr">
                 <div class="flight-no">{{$flight->fno}}</div>
                 <div class="flight-model">
@@ -99,12 +98,12 @@
                 </div>
             </div>
             <div class="info-button">
-                <a href="{{route("buy_info")}}">
+                <a href="{{route("buy_info",[$flight->id,'First class'])}}">
                     <button class="bt-lt br-sm fw-nm fz-16">BUY NOW ></button>
                 </a>
             </div>
         </div>
-            @endforeach
+        @endforeach
     </div>
 </main>
 <script>
@@ -112,6 +111,15 @@
         if($(this).children('.cl-lt').text() === "0"){
             return false;
         }
+        let $a = $(this).parent().next().children("a")
+        let prevSelected = $(this).parent().children(".selected");
+        let href;
+        if(prevSelected.length === 0){
+            href = $a.attr("href").replace("First%20class",$(this).children(".cl-dk").text())
+        }else{
+            href = $a.attr("href").replace(prevSelected.children(".cl-dk").text(),$(this).children(".cl-dk").text())
+        }
+        $a.attr("href",href)
         $(this).addClass("selected").siblings().removeClass('selected')
     })
 </script>

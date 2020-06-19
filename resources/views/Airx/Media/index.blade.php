@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="{{asset("css/default.css")}}">
     <link rel="stylesheet" href="{{asset("css/formpage.css")}}">
     <link rel="stylesheet" href="{{asset("css/index.css")}}">
-    <script src="js/jquery-3.1.1.js"></script>
 @stop
 
 @section("banner")
