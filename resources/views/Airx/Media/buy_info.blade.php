@@ -130,7 +130,7 @@
 \t\t\t\t\t\t\t</div>
             `;
             $(".guest-option").on("click",function () {
-                $(this).addClass("selected")
+                $(this).hasClass('selected') ? $(this).removeClass("selected") : $(this).addClass('selected')
             })
             $(".add-guest").on("click",function () {
                 $(".guest-detail").append(template)
