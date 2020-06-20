@@ -46,7 +46,7 @@ class FlightController extends Controller
                     $query->where("to_city",$request['to']);
                 };
                 if ($request['date'] && $request['date'] == date("Y-m-d")){
-                    $query->where("time",">",date("H:i:s",strtotime("+30 minute")));
+                    $query->where("time",">",date("H:i:s",strtotime("+1 hours")));
                 }
             })
             ->orderBy("date","asc")

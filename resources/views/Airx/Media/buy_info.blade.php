@@ -71,16 +71,16 @@
                                 <div class="guest-form br-sm" data-guest="{{$guest->id}}">
 								<div class="form-row flex">
 									<div class="field-name cl-gr">NAME</div>
-									<div class="field-input"><input type="text" title="name" class="input mid" name="name[]" value="{{$guest->guest_name}}" readonly=""></div>
+									<div class="field-input"><input type="text" title="name" class="input mid" value="{{$guest->guest_name}}" readonly=""></div>
 								</div>
 								<div class="form-row flex">
 									<div class="field-name cl-gr">PHONE</div>
-									<div class="field-input"><input type="text" title="phone" class="input mid" name="phone[]" value="{{$guest->phone}}" readonly=""></div>
+									<div class="field-input"><input type="text" title="phone" class="input mid"  value="{{$guest->phone}}" readonly=""></div>
 								</div>
 								<div class="form-row flex">
 									<div class="field-name cl-gr">GENDER</div>
 									<div class="field-input">
-										<select title="gender" class="input mid" name="gender[]" disabled="">
+										<select title="gender" class="input mid"  disabled="">
                                             <option {{$guest->gender == "female" ? "selected" : ""}} value="female">Female</option>
                                             <option {{$guest->gender == "male" ? "selected" : ""}} value="male">Male</option>
 										</select>
@@ -88,7 +88,7 @@
 								</div>
 								<div class="form-row flex">
 									<div class="field-name cl-gr">ID CARD</div>
-									<div class="field-input"><input type="text" title="id_card" class="input mid" name="card[]" value="45648945216545" readonly=""></div>
+									<div class="field-input"><input type="text" title="id_card" class="input mid" value="45648945216545" readonly=""></div>
 								</div>
 							</div>
                             @endforeach
@@ -133,7 +133,11 @@
                 $(this).addClass("selected")
             })
             $(".add-guest").on("click",function () {
-                $(".guest-detail").append(template)
+                let guestDetail = $(".guest-detail")
+                if(parseInt($(".flight-class .cl-bl").text()) <= guestDetail.children().length){
+                    return false;
+                }
+                guestDetail.append(template)
 
                 $(".guest-form .remove-button").on("click",function () {
                     $(this).parent().remove();

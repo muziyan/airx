@@ -39,7 +39,7 @@ class BaseRouterController extends Controller
 
         $cities = City::all();
 
-        $flight = Flight::where("time",">",date("H:i:s",strtotime("+30 minute")))
+        $flight = Flight::where("time",">",date("H:i:s",strtotime("+1 hours")))
                         ->where('date',">=",date("Y-m-d"))
                         ->orderBy("date","asc")
                         ->orderBy("time",'asc')
