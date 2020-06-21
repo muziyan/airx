@@ -16,4 +16,8 @@ class guest extends Model
         "card"
     ];
 
+    public function ticket(){
+        return $this->hasMany("App\Model\Ticket");
+    }
+
 }

@@ -122,5 +122,10 @@
         $a.attr("href",href)
         $(this).addClass("selected").siblings().removeClass('selected')
     })
+    $(".info-button a").on("click",function () {
+        if(!$(this).parent().prev().children().hasClass("selected")){
+            return false;
+        }
+    })
 </script>
 @stop

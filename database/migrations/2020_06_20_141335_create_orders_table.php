@@ -18,7 +18,6 @@ class CreateOrdersTable extends Migration
             $table->integer("user_id");
             $table->dateTime("order_time");
             $table->integer("flight_id");
-
         });
     }
 

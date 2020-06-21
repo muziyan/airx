@@ -17,8 +17,8 @@ class CreateGuestsTable extends Migration
             $table->id();
             $table->integer("user_id");
             $table->string("guest_name");
-            $table->integer("phone");
-            $table->enum("gender",['max','female']);
+            $table->string("phone");
+            $table->enum("gender",['male','female']);
             $table->string("card");
         });
     }

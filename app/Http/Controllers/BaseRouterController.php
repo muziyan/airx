@@ -23,7 +23,7 @@ class BaseRouterController extends Controller
     }
 
     public function ucenter(){
-        $guests = guest::where("user_id",session("user_id"))->get();
+        $guests = session("user")->Guests();
 
         return view("Airx.Media.ucenter",[
             "guests" => $guests,
@@ -55,10 +55,20 @@ class BaseRouterController extends Controller
 
         $flight = Flight::find($id);
         $guests = guest::where("user_id",session("user_id"))->get();
-
         $classArr = $this->convertFlightType($class);
 
+        foreach ($guests as $guest){
+            foreach ($guest->ticket()->get() as $item) {
+                if ($item->order()->first()->flight_id){
+                    $guest['status'] = false;
+                }else{
+                    $guest['status'] = true;
+                }
+            }
+        }
+
         return view("Airx.Media.buy_info",[
+            "flight_id" => $id,
             "flight" => $flight,
             "guests" => $guests,
             "user" => session("user"),

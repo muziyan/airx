@@ -13,6 +13,7 @@ class Authenticate
         $user_id = session("user_id");
         $user = User::find($user_id);
         if (!$user){
+            session()->flush();
             return redirect("/login")->with("error","Log in first, please!");
         }
         session(['user'=>$user]);

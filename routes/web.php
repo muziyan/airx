@@ -32,3 +32,6 @@ Route::get("/logout","UserController@logout")->name("logout");
 
 // user
 Route::resource("/user","UserController")->only(['update']);
+
+// order
+Route::post("/order/{flight_id}/{class_type}","OrderController@create")->name("order");

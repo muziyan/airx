@@ -17,7 +17,7 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->integer("guest_id");
             $table->integer("order_id");
-            $table->integer("seat_num")->default("null");
+            $table->integer("seat_num")->nullable();
             $table->string("class_type");
         });
     }

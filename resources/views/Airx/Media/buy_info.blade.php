@@ -54,7 +54,8 @@
 						</div>
 					</div>
 				</div>
-				<form class="guest-info" method="post" action="result.html">
+				<form class="guest-info" method="post" action="{{route("order",[$flight_id,$class])}}">
+                    @csrf()
 					<div class="title-line">
 						<b class="cl-md fz-24 bg-wt">Guest Info</b>
 					</div>
@@ -62,7 +63,7 @@
 						<div class="guest-list">
 							<span class="fw-bd cl-dk">Saved Guests:</span>
                             @foreach($guests as $guest)
-							    <div class="guest-option br-sm cl-dk bg-lt" data-guest="{{$guest->id}}">{{$guest->id}}</div>
+							    <div class="guest-option br-sm cl-dk bg-lt {{$guest->status ? "selected" : ""}}" {{ $guest->status ? "status=true" : "status=false" }} data-guest="{{$guest->id}}">{{$guest->guest_name}}</div>
                             @endforeach
 							<div class="add-guest br-sm cl-dk bg-lt">+</div>
 						</div>
@@ -112,26 +113,47 @@
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class="form-row flex">
 \t\t\t\t\t\t\t\t\t<div class="field-name cl-gr">PHONE</div>
-\t\t\t\t\t\t\t\t\t<div class="field-input"><input type="text" title="phone" class="input mid" name="phone[]"></div>
+\t\t\t\t\t\t\t\t\t<div class="field-input"><input type="text" title="phone" minlength="11" maxlength="11" class="input mid" name="phone[]"></div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class="form-row flex">
 \t\t\t\t\t\t\t\t\t<div class="field-name cl-gr">GENDER</div>
 \t\t\t\t\t\t\t\t\t<div class="field-input">
 \t\t\t\t\t\t\t\t\t\t<select title="gender" class="input mid" name="gender[]">
-\t\t\t\t\t\t\t\t\t\t\t<option value="m">Male</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value="f">Female</option>
+\t\t\t\t\t\t\t\t\t\t\t<option value="male">Male</option>
+\t\t\t\t\t\t\t\t\t\t\t<option value="female">Female</option>
 \t\t\t\t\t\t\t\t\t\t</select>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class="form-row flex">
 \t\t\t\t\t\t\t\t\t<div class="field-name cl-gr">ID CARD</div>
-\t\t\t\t\t\t\t\t\t<div class="field-input"><input type="text" title="id_card" class="input mid" name="card"></div>
+\t\t\t\t\t\t\t\t\t<div class="field-input"><input type="text" title="id_card" minlength="18" maxlength="18" class="input mid" name="card[]"></div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
             `;
-            $(".guest-option").on("click",function () {
-                $(this).addClass("selected")
+            let guestOption = $(".guest-option");
+            let guestForm = $(".guest-detail .guest-form")
+            guestOption.on("click",function () {
+                let dataGuest = $(this).attr("data-guest")
+                if($(this).attr("status") === "false"){
+                    return false;
+                }
+                if($(this).hasClass("selected")){
+                    $(this).removeClass("selected")
+                    Array.from($("input[type=hidden]")).map(v =>{
+                        $(v).val() === dataGuest && $(v).remove()
+                    })
+                    toggle(Array.from(guestForm),dataGuest,false)
+                }else{
+                    $(this).addClass("selected");
+                    let guestInput = `
+                        <input type="hidden" name="guest_id[]" value="${dataGuest}">
+                    `;
+                    $(this).parent().append(guestInput)
+                    toggle(Array.from(guestForm),dataGuest,true)
+                }
+
             })
+
             $(".add-guest").on("click",function () {
                 let guestDetail = $(".guest-detail")
                 if(parseInt($(".flight-class .cl-bl").text()) <= guestDetail.children().length){
@@ -143,6 +165,20 @@
                     $(this).parent().remove();
                 })
             })
+
+            Array.from(guestOption).filter(v =>{
+                return $(v).attr("status") === "false"
+            }).map(v => {
+                toggle(Array.from(guestForm),$(v).attr("data-guest"),false)
+            })
+
+            function toggle(arr,data,status){
+                arr.map(v =>{
+                    if($(v).attr("data-guest") === data){
+                        status ? $(v).show() : $(v).hide()
+                    }
+                })
+            }
 		});
 		</script>
 @stop

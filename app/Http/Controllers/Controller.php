@@ -18,7 +18,7 @@ class Controller extends BaseController
             case "Business":
                 return ['b_tol',"b_num"];
             case "Economic":
-                return ['e_tol','b_num'];
+                return ['e_tol','e_num'];
         }
     }
 
