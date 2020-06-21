@@ -130,6 +130,7 @@
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
             `;
+<<<<<<< HEAD
             let guestOption = $(".guest-option");
             let guestForm = $(".guest-detail .guest-form")
             guestOption.on("click",function () {
@@ -152,6 +153,10 @@
                     toggle(Array.from(guestForm),dataGuest,true)
                 }
 
+=======
+            $(".guest-option").on("click",function () {
+                $(this).hasClass('selected') ? $(this).removeClass("selected") : $(this).addClass('selected')
+>>>>>>> b0f3ca547986c89cf4d9a19fa5359737cb00bddb
             })
 
             $(".add-guest").on("click",function () {
