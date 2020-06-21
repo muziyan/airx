@@ -23,7 +23,7 @@ class BaseRouterController extends Controller
     }
 
     public function ucenter(){
-        $guests = session("user")->Guests();
+        $guests = session("user")->Guests()->get();
 
         return view("Airx.Media.ucenter",[
             "guests" => $guests,

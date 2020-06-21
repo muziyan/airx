@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function create($flight_id,$class_type,Request $request){
+
         $flight = Flight::find($flight_id);
 
         $classArr = $this->convertFlightType($class_type);

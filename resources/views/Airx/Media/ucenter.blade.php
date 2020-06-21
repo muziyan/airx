@@ -87,7 +87,7 @@
                         <div class="guest-info bg-eee fz-16 br-sm">
                             <div class="guest-name">
                                 <input type="text" title="NAME" class="input big"
-                                       value="{{$guest->$guest_name}}">
+                                       value="{{$guest->guest_name}}">e
                             </div>
                             <div class="guest-detail">
                                 <div class="mobile form-group">

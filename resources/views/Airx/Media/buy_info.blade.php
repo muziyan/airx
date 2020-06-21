@@ -130,33 +130,31 @@
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
             `;
-<<<<<<< HEAD
             let guestOption = $(".guest-option");
             let guestForm = $(".guest-detail .guest-form")
             guestOption.on("click",function () {
                 let dataGuest = $(this).attr("data-guest")
-                if($(this).attr("status") === "false"){
+                if ($(this).attr("status") === "false") {
                     return false;
                 }
-                if($(this).hasClass("selected")){
+                if ($(this).hasClass("selected")) {
                     $(this).removeClass("selected")
-                    Array.from($("input[type=hidden]")).map(v =>{
+                    Array.from($("input[type=hidden]")).map(v => {
                         $(v).val() === dataGuest && $(v).remove()
                     })
-                    toggle(Array.from(guestForm),dataGuest,false)
-                }else{
+                    toggle(Array.from(guestForm), dataGuest, false)
+                } else {
                     $(this).addClass("selected");
                     let guestInput = `
                         <input type="hidden" name="guest_id[]" value="${dataGuest}">
                     `;
                     $(this).parent().append(guestInput)
-                    toggle(Array.from(guestForm),dataGuest,true)
+                    toggle(Array.from(guestForm), dataGuest, true)
                 }
+            })
 
-=======
-            $(".guest-option").on("click",function () {
+            guestOption.on("click",function () {
                 $(this).hasClass('selected') ? $(this).removeClass("selected") : $(this).addClass('selected')
->>>>>>> b0f3ca547986c89cf4d9a19fa5359737cb00bddb
             })
 
             $(".add-guest").on("click",function () {
