@@ -18,4 +18,9 @@ class Ticket extends Model
     public function order(){
         return $this->belongsTo("App\Model\Order");
     }
+
+    public function guest(){
+        return $this->belongsTo("App\Models\guest");
+    }
+
 }

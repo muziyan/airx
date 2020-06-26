@@ -77,6 +77,39 @@ class BaseRouterController extends Controller
         ]);
     }
 
+    public function selectTicket(){
+        $orders = session("user")->order()->get();
+
+        return view("Airx.Media.select_ticket",[
+            "orders" => $orders
+        ]);
+    }
+
+    public function selectTicketGuest(Request $request){
+
+        $guest = guest::where('card',$request['card'])
+                ->where("phone",$request['phone'])->first();
+
+        if (!$guest){
+            return back()->with("error","card or phone error!");
+        }
+
+        $tickets = $guest->ticket()->get();
+
+        if (count($tickets) <= 0){
+            return back()->with("error","This user has no available tickets!");
+        }
+
+        return view("Airx.Media.select_ticket_guest",[
+            "guest" => $guest,
+            "tickets" => $tickets
+        ]);
+    }
+
+    public function selectSeat(){
+        return view("Airx.Media.select_seat");
+    }
+
     public function login(){
         return view("Airx.Media.login");
     }
@@ -84,4 +117,5 @@ class BaseRouterController extends Controller
     public function register(){
         return view("Airx.Media.register");
     }
+
 }

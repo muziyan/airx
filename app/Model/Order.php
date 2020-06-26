@@ -13,4 +13,12 @@ class Order extends Model
         "order_time",
         "flight_id"
     ];
+
+    public function Flight(){
+        return $this->belongsTo("App\Models\Flight");
+    }
+
+    public function Ticket(){
+        return $this->belongsTo("App\Model\Ticket",'id','order_id');
+    }
 }

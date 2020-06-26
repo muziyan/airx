@@ -42,7 +42,7 @@
                 </button>
                 &nbsp;&nbsp;&nbsp;
                 <button class="br-sm bt-lt">
-                    <a href="select_seat.html">
+                    <a href="select_seat.blade.php">
                         Check In
                     </a>
                 </button>

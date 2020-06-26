@@ -35,3 +35,11 @@ Route::resource("/user","UserController")->only(['update']);
 
 // order
 Route::post("/order/{flight_id}/{class_type}","OrderController@create")->name("order");
+
+
+// ticket
+Route::get("/select_ticket","BaseRouterController@selectTicket")->name("select_ticket")->middleware("auth");
+Route::post("/select_ticket_guest","BaseRouterController@selectTicketGuest")->name("select_ticket_guest");
+
+//seat
+Route::get("/select_seat","BaseRouterController@selectSeat")->name("select_seat");

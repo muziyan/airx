@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer("user_id");
             $table->dateTime("order_time");
             $table->integer("flight_id");
+            $table->enum("order_status",['check-in available','check-in'])->default("check-in available");
         });
     }
 

@@ -1,0 +1,11 @@
+Your ticket(s) of flight UB4874 have been successfully purchased.
+
+This order contains following contents:
+2 AIRX flight ticket(s) of flight UB4874 (Economic Class).
+
+The guests are:
+Bob Selion, ID Card:123456987845210547
+Steven Dragon, ID Card:123456987845210425
+
+Your flight will take off at 13:50 02/04/2017. Please get ready for boarding.
+Thank you for choosing our flights.
